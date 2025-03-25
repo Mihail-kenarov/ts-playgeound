@@ -1,28 +1,17 @@
 //classes
 class Invoice {
-    // readonly client: string;
-    // private details: string;
-    // public amount: number;
-
-
     constructor(
         readonly client: string,
         private details: string,
         public amount: number,
-    ){   
-    }
-
-    // constructor(c: string, d:string, a:number){
-    //     this.client = c;
-    //     this.details = d;
-    //     this.amount = a;
-    // }
+    ){}
 
 
 format(){
     return `${this.client} owes $ ${this.amount} for ${this.details}`
 }
 }
+
 
 const InvOne = new Invoice("marion","work on the mario website", 360);
 const InvTwo = new Invoice("luigi","work on the luigi website", 340);
