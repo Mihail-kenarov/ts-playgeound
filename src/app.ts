@@ -1,22 +1,46 @@
-// const anchor = document.querySelector(`a`)!;
-
-// // if(anchor){
-
-// //     console.log(anchor.href);    
-// // }
-
-// console.log(anchor.href);
+//classes
+class Invoice {
+    client: string;
+    details: string;
+    amount: number;
 
 
-// const form = document.querySelector("form")!;
+    constructor(c: string, d:string, a:number){
+        this.client = c;
+        this.details = d;
+        this.amount = a;
+    }
+
+
+format(){
+    return `${this.client} owes $ ${this.amount} for ${this.details}`
+}
+}
+
+const InvOne = new Invoice("marion","work on the mario website", 360);
+const InvTwo = new Invoice("luigi","work on the luigi website", 340);
+
+console.log(InvOne)
+console.log(InvTwo)
+
+
+let invoices: Invoice[] = [];
+
+invoices.push(InvOne);
+invoices.push(InvTwo);
+
+console.log(invoices);
+
+InvOne.client = "Yoshi";
+InvTwo.amount = 250;
+
+console.log(InvOne,InvTwo);
+
 
 
 const form = document.querySelector(".new-item-form") as HTMLFormElement;
 
-//console.log(form.children);
-
 //inputs
-
 const type = document.querySelector("#type") as HTMLSelectElement;
 const tofrom = document.querySelector("#tofrom") as HTMLInputElement;
 const details = document.querySelector("#details") as HTMLInputElement;
