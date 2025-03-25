@@ -1,15 +1,22 @@
 //classes
 class Invoice {
-    client: string;
-    details: string;
-    amount: number;
+    // readonly client: string;
+    // private details: string;
+    // public amount: number;
 
 
-    constructor(c: string, d:string, a:number){
-        this.client = c;
-        this.details = d;
-        this.amount = a;
+    constructor(
+        readonly client: string,
+        private details: string,
+        public amount: number,
+    ){   
     }
+
+    // constructor(c: string, d:string, a:number){
+    //     this.client = c;
+    //     this.details = d;
+    //     this.amount = a;
+    // }
 
 
 format(){
@@ -20,21 +27,16 @@ format(){
 const InvOne = new Invoice("marion","work on the mario website", 360);
 const InvTwo = new Invoice("luigi","work on the luigi website", 340);
 
-console.log(InvOne)
-console.log(InvTwo)
-
 
 let invoices: Invoice[] = [];
-
 invoices.push(InvOne);
 invoices.push(InvTwo);
 
-console.log(invoices);
 
-InvOne.client = "Yoshi";
-InvTwo.amount = 250;
 
-console.log(InvOne,InvTwo);
+invoices.forEach(inv => {
+    console.log(inv.client , inv.amount, inv.format());
+});
 
 
 
