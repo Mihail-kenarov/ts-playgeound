@@ -12,32 +12,23 @@ const list = new ListTemplate(ul);
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     let doc;
+    let values;
+    values = [tofrom.value, details.value, amount.valueAsNumber];
     if (type.value === "invoice") {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
     list.render(doc, type.value, "end");
 });
-//ENUMS
-var ResourceType;
-(function (ResourceType) {
-    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
-    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
-    ResourceType[ResourceType["LIST"] = 2] = "LIST";
-    ResourceType[ResourceType["FILM"] = 3] = "FILM";
-    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
-    ResourceType[ResourceType["DIRECTOR"] = 5] = "DIRECTOR";
-})(ResourceType || (ResourceType = {}));
-const docThree = {
-    uid: 2,
-    resourseType: ResourceType.AUTHOR,
-    data: { NAME: "SHAWN" },
-};
-const docFour = {
-    uid: 4,
-    resourseType: ResourceType.LIST,
-    data: ["bread", "cheese", "toilet roll", "milk"]
-};
-console.log(docThree, docFour);
+//Tuples 
+let arr = ["ryu", 25, true];
+arr[0] = false;
+arr[1] = "yoshi";
+arr = [25, false, "ryu"];
+let tup = ["ryu", 25, true];
+tup[0] = "ken";
+tup[1] = 23;
+let student;
+student = ["George", 12483];

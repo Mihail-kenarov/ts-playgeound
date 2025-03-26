@@ -18,47 +18,34 @@ const list = new ListTemplate(ul);
 form.addEventListener("submit",(e: Event) =>{
     e.preventDefault();
 
+
     let doc:HasFormatter;
+    let values: [string,string,number]
+    values = [tofrom.value, details.value, amount.valueAsNumber];
+
 
 if(type.value === "invoice"){
-    doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+    doc = new Invoice(...values)
 }else{
-    doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+    doc = new Payment(...values)
 }
 
 list.render(doc,type.value, "end")
 })
 
 
-//ENUMS
-enum ResourceType{
-    BOOK,
-    AUTHOR,
-    LIST,
-    FILM,
-    PERSON,
-    DIRECTOR
-}
+//Tuples 
+
+let arr = ["ryu",25,true];
+arr[0] = false;
+arr[1] = "yoshi";
+arr = [25,false,"ryu"];
 
 
+let tup: [string,number,boolean] = ["ryu",25,true];
+tup[0] = "ken";
+tup[1] = 23;
 
-//GENERICS with INTERFACES
-interface Resource <T> {
-    uid: number;
-    resourseType:ResourceType;
-    data:T;
-}
+let student: [string, number];
+student = ["George",12483];
 
-const docThree:Resource<object> = {
-    uid:2,
-    resourseType:ResourceType.AUTHOR,
-    data: {NAME:"SHAWN"},
-}
-
-const docFour: Resource<string[]> = {
-    uid:4,
-    resourseType:ResourceType.LIST,
-    data: ["bread","cheese","toilet roll","milk"]
-}
-
-console.log(docThree,docFour);
