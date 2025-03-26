@@ -28,3 +28,38 @@ if(type.value === "invoice"){
 
 list.render(doc,type.value, "end")
 })
+
+
+
+
+//GENERICS
+const addUID = <T extends {name: string }>(obj:T) => {
+    let uid = Math.floor(Math.random() * 100);
+    return{...obj,uid};
+}
+
+let docOne = addUID({name:"yoshi", age:40});
+// let docTwo = addUID("hello");
+console.log(docOne.age)
+
+
+//GENERICS with INTERFACES
+interface Resource <T> {
+    uid: number;
+    resourceName: string;
+    data:T;
+}
+
+const docThree:Resource<object> = {
+    uid:2,
+    resourceName:"Person",
+    data: {NAME:"SHAWN"},
+}
+
+const docFour: Resource<string[]> = {
+    uid:4,
+    resourceName:"shopping list",
+    data: ["bread","cheese","toilet roll","milk"]
+}
+
+console.log(docThree,docFour);
